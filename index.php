@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,6 +15,7 @@
     integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
   <link rel="stylesheet" href="./assets/css/base.css">
   <link rel="stylesheet" href="./assets/css/main.css">
+  <link rel="stylesheet" href="./assets/css/login.css">
   <link rel="stylesheet" href="./assets/css/sidebars.css">
   <link rel="stylesheet" href="./assets/css/footers.css">
   <link rel="stylesheet" href="./assets/css/detail.css">
@@ -94,15 +99,38 @@
               Trợ giúp
             </a>
           </li>
-          <li class="navbar__list__item navbar__list__item--strong" data-bs-toggle="modal" data-bs-target="#dangky">
-            Đăng ký</li>
-          <li class="navbar__list__item navbar__list__item--strong" data-bs-toggle="modal" data-bs-target="#dangnhap">
-            Đăng nhập</li>
+          <?php
+            if ($_SESSION == NULL) {
+              echo '<li class="navbar__list__item navbar__list__item--strong" data-bs-toggle="modal" data-bs-target="#dangky">Đăng ký</li>';
+              echo '<li class="navbar__list__item navbar__list__item--strong" data-bs-toggle="modal" data-bs-target="#dangnhap">Đăng nhập</li>';
+            }
+            else {
+              echo ''.
+              '<li class="navbar__list__item navbar__list__item--strong header-navbar-user">'.
+                '<img src="./assets/img/avatar.jpg" alt="" class="header-navbar-user-img">'.
+                '<span class="header-navbar-user-name">'. $_SESSION["user_name"] .'</span>'.
+                '<ul class="header-navbar-user-menu">'.
+                  '<li class="menu-user-item">'.
+                    '<a href="">Tài khoản của tôi</a>'.
+                  '</li>'.
+                  '<li class="menu-user-item">'.
+                    '<a href="">Địa chỉ của tôi</a>'.
+                  '</li>'.
+                  '<li class="menu-user-item">'.
+                    '<a href="">Đơn mua</a>'.
+                  '</li>'.
+                  '<li class="menu-user-item">'.
+                    '<a href="./logout.php">Đăng xuất</a>'.
+                  '</li>'.
+                '</ul>'.
+              '</li>';
+            }
+          ?>
         </ul>
       </nav>
       <div class="row">
         <div class="col-3 text-center">
-          <a href="./index.html" class="icon_home">
+          <a href="./index.php" class="icon_home">
             <img src="./assets/img/tdt white.png" alt="TDT" class="icon__home-img">
           </a>
         </div>
@@ -448,31 +476,28 @@
     </div>
   </div>
 
-
-
-
-
-
   <!-- Modal dang nhap -->
   <div class="modal fade" id="dangnhap" data-bs-keyboard="false" tabindex="-1" aria-labelledby="dangnhap"
     aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
-        <div class="modal-header">
-          <h4 class="modal-title" id="staticBackdropLabel">Đăng nhập</h4>
-          <button class="btn btn-dangnhap col-6" data-bs-target="#dangky" data-bs-toggle="modal">Đăng ký</button>
+        <form action="./login.php" method="post">
+
+          <div class="modal-header">
+            <h4 class="modal-title" id="staticBackdropLabel">Đăng nhập</h4>
+            <button class="btn btn-dangnhap col-6" data-bs-target="#dangky" data-bs-toggle="modal">Đăng ký</button>
         </div>
         <div class="modal-body">
           <div class="mb-3 row">
             <label for="exampleFormControlInput1" class="col-sm-2 col-form-label">Email</label>
             <div class="col-sm-10">
-              <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+              <input name="email" type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
             </div>
           </div>
           <div class="mb-3 row">
             <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
             <div class="col-sm-10">
-              <input type="password" class="form-control" id="inputPassword">
+              <input name="password" type="password" class="form-control" id="inputPassword">
             </div>
           </div>
           <div class="mb-4 row">
@@ -485,55 +510,64 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Trở lại</button>
-          <button type="button" class="btn btn-primary">Đăng nhập</button>
+          <button type="submit" class="btn btn-primary">Đăng nhập</button>
         </div>
+      </form>
       </div>
     </div>
   </div>
   <!-- Modal dang nhap -->
 
+
   <!-- Modal dang ky -->
   <div class="modal fade" id="dangky" tabindex="-1" aria-labelledby="dangky" aria-hidden="true">
     <div class="modal-dialog ">
       <div class="modal-content">
-        <div class="modal-header">
-          <h4 class="modal-title col-6" id="exampleModalLabel">Đăng ký</h4>
-          <button class="btn btn-dangnhap col-6" data-bs-target="#dangnhap" data-bs-toggle="modal">Đăng nhập</button>
-        </div>
-        <div class="modal-body">
-          <div class="mb-7 row">
-            <label for="exampleFormControlInput1" class="col-sm-4 col-form-label">Email</label>
-            <div class="col-sm-10">
-              <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+        <form action="./signup.php" method="post">
+
+          <div class="modal-header">
+            <h4 class="modal-title col-6" id="exampleModalLabel">Đăng ký</h4>
+            <button class="btn btn-dangnhap col-6" data-bs-target="#dangnhap" data-bs-toggle="modal">Đăng nhập</button>
+          </div>
+          <div class="modal-body">
+            <div class="mb-7 row">
+              <label for="exampleFormControlInput1" class="col-sm-4 col-form-label">Email</label>
+              <div class="col-sm-10">
+                <input name="email" type="email" required class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+              </div>
+            </div>
+            <div class="mb-7 row">
+              <label for="user_name" class="col-sm-4 col-form-label">Tên đăng nhập</label>
+              <div class="col-sm-10">
+                <input name="user_name" type="text" required class="form-control" id="user_name">
+              </div>
+            </div>
+            <div class="mb-7 row">
+              <label for="password" class="col-sm-4 col-form-label">Password</label>
+              <div class="col-sm-10">
+                <input name="password" type="password" required class="form-control" id="password">
+              </div>
+            </div>
+            <div class="mb-7 row">
+              <label for="re_password" class="col-sm-4 col-form-label">Nhập lại password</label>
+              <div class="col-sm-10">
+                <input name="repassword" type="password" required class="form-control" id="re_password" onkeyup="checkRePass()">
+              </div>
+            </div>
+            <div class="mb-7 row">
+              <p class="auth-form-policy-text">Bằng việc đăng kí, bạn đã đồng ý với Shop về
+                <a href="" class="auth-form-policy-link">Điều khoản dịch vụ</a> &
+                <a href="" class="auth-form-policy-link">Chính sách bảo mật</a>
+              </p>
             </div>
           </div>
-          <div class="mb-7 row">
-            <label for="inputPassword" class="col-sm-4 col-form-label">Password</label>
-            <div class="col-sm-10">
-              <input type="password" class="form-control" id="inputPassword">
-            </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Trở lại</button>
+            <button type="submit" class="btn btn-primary" id="btn-signup" disabled>Đăng ký</button>
           </div>
-          <div class="mb-7 row">
-            <label for="inputPassword" class="col-sm-4 col-form-label">Nhập lại password</label>
-            <div class="col-sm-10">
-              <input type="password" class="form-control" id="inputPassword">
-            </div>
-          </div>
-          <div class="mb-7 row">
-            <p class="auth-form-policy-text">Bằng việc đăng kí, bạn đã đồng ý với Shop về
-              <a href="" class="auth-form-policy-link">Điều khoản dịch vụ</a> &
-              <a href="" class="auth-form-policy-link">Chính sách bảo mật</a>
-            </p>
-          </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Trở lại</button>
-          <button type="button" class="btn btn-primary">Đăng ký</button>
-        </div>
+        </form>
       </div>
     </div>
-
-
   </div>
 
 
@@ -544,6 +578,20 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
     integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
     crossorigin="anonymous"></script>
+  <script>
+    function checkRePass() {
+      var pass = document.getElementById("password").value;
+      var rePass = document.getElementById("re_password").value;
+      if (pass != rePass) {
+        document.getElementById("re_password").style.color = "red";
+        document.getElementById("btn-signup").disabled = true;
+      }
+      else {
+        document.getElementById("re_password").style.color = "green";
+        document.getElementById("btn-signup").disabled = false;
+      }
+    }
+  </script>
 </body>
 
 </html>
