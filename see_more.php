@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -102,7 +106,7 @@
       </nav>
       <div class="row">
         <div class="col-3 text-center">
-          <a href="./index.html" class="icon_home">
+          <a href="./index.php" class="icon_home">
             <img src="./assets/img/tdt white.png" alt="TDT" class="icon__home-img">
           </a>
         </div>
@@ -117,7 +121,7 @@
           </div>
         </div>
         <div class="col-3 text-center">
-          <a href="./giohang.html" class="col-3 text-center icon_shop">
+          <a href="./giohang.php" class="col-3 text-center icon_shop">
             <i class="fas fa-shopping-cart"></i>
             Giỏ hàng
           </a>
@@ -131,7 +135,7 @@
         <div class="col-8 main-header-seemore">
           <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
             <ol class="breadcrumb">
-              <li class="breadcrumb-item"><a href="./index.html">TRANG CHỦ</a></li>
+              <li class="breadcrumb-item"><a href="./index.php">TRANG CHỦ</a></li>
               <li class="breadcrumb-item active fw-bold" aria-current="page">ĐỒ UỐNG CÁC LOẠI</li>
             </ol>
           </nav>
@@ -233,7 +237,7 @@
             <div class="card-body">
               <div class="card-group">
                 <div class="card card-sanpham-danhmuc">
-                  <a href="./detail.html" class="card-title-link">
+                  <a href="./detail.php" class="card-title-link">
                     <img src="./assets/img/nuoc_khoang.jpg" class="card-img-top" alt="cafe">
                     <div class="card-body card-body-danhmuc">
                       <h5 class="card-title">Nước khoáng TH</h5>

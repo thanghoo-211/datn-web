@@ -146,7 +146,8 @@ session_start();
           <?php
           if ($_SESSION == NULL) {
             echo''.
-              '<a href="#" class="col-3 text-center icon_shop" >'.
+              '<a href="#" onclick = "myFunction()" class="col-3 text-center icon_shop" >'.
+              // '<input href="javascript:myFunction;">'.
               '<i class="fas fa-shopping-cart"></i>'.
               'Giỏ hàng</a>';
           }
@@ -513,7 +514,9 @@ session_start();
               <span class="auth-form-policy-help-separate"></span>
               <a href="" class="auth-form-policy-link-dang-nhap auth-form-policy-link-dang-nhap-help">Cần trợ giúp ?</a>
               <?php if (isset($_GET['error'])) { ?>
-                <script type='text/javascript'>alert('Sai tài khoản hoặc mật khẩu');</script>
+              <script  
+              type='text/javascript'>alert('Sai tài khoản hoặc mật khẩu');
+              </script>
               <?php } ?>
             </div>
           </div>
@@ -602,6 +605,11 @@ session_start();
       }
     }
   </script>
+  <script>
+    function myFunction() {
+      alert("Vui lòng đăng nhập để sử dụng");
+          }
+</script>
 </body>
 
 </html>

@@ -149,7 +149,7 @@ session_start();
           </div>
         </div>
         <div class="col-3 text-center icon-giohang">
-          <a href="./giohang.html" class="col-3 text-center icon_shop">
+          <a href="./giohang.php" class="col-3 text-center icon_shop">
             <i class="fas fa-shopping-cart position-relative icon-badge">
               <span class="notification-icon">0<span class="visually-hidden">unread messages</span></span>
             </i>
