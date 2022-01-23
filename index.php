@@ -268,7 +268,7 @@ session_start();
             <div class="card-body">
               <div class="card-group">
                 <div class="card card-sanpham-danhmuc">
-                  <a href="./detail.html" class="card-title-link">
+                  <a href="./detail.php" class="card-title-link">
                     <img src="./assets/img/nuoc_khoang.jpg" class="card-img-top" alt="cafe">
                     <div class="card-body card-body-danhmuc">
                       <h5 class="card-title">Nước khoáng TH</h5>
@@ -308,7 +308,7 @@ session_start();
               </div>
             </div>
             <div class="card-footer text-center">
-              <a href="./see_more.html"><button type="button" class="card-footer_xemthembtn btn btn-primary">Xem
+              <a href="./see_more.php"><button type="button" class="card-footer_xemthembtn btn btn-primary">Xem
                   thêm</button></a>
             </div>
           </div>
@@ -358,7 +358,7 @@ session_start();
               </div>
             </div>
             <div class="card-footer text-center">
-              <a href="./see_more.html"><button type="button" class="card-footer_xemthembtn btn btn-primary">Xem
+              <a href="./see_more.php"><button type="button" class="card-footer_xemthembtn btn btn-primary">Xem
                   thêm</button></a>
             </div>
           </div>
@@ -408,7 +408,7 @@ session_start();
               </div>
             </div>
             <div class="card-footer text-center">
-              <a href="./see_more.html"><button type="button" class="card-footer_xemthembtn btn btn-primary">Xem
+              <a href="./see_more.php"><button type="button" class="card-footer_xemthembtn btn btn-primary">Xem
                   thêm</button></a>
             </div>
           </div>
