@@ -8,6 +8,7 @@
     width: 28px;
     height: 28px;
     border-radius: 50%;
+    margin-right: 0.5rem;
 }
 .header-login-page{
     padding-left: 4rem;

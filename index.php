@@ -1,15 +1,13 @@
 <?php
 session_start();
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Trang ch</title>
+  <title>Trang chủ</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
@@ -145,11 +143,21 @@ session_start();
           </div>
         </div>
         <div class="col-3 text-center">
-          <a href="./giohang.html" class="col-3 text-center icon_shop">
-            <i class="fas fa-shopping-cart"></i>
-            Giỏ hàng
-          </a>
-        </div>
+          <?php
+          if ($_SESSION == NULL) {
+            echo''.
+              '<a href="#" class="col-3 text-center icon_shop" >'.
+              '<i class="fas fa-shopping-cart"></i>'.
+              'Giỏ hàng</a>';
+          }
+          else {
+            echo''.
+            '<a href="./giohang.php" class="col-3 text-center icon_shop">'.
+            '<i class="fas fa-shopping-cart"></i>'.
+            'Giỏ hàng</a>';
+          }
+          ?>
+         </div>
       </div>
     </div>
     <!-- mainpart -->
@@ -482,7 +490,6 @@ session_start();
     <div class="modal-dialog">
       <div class="modal-content">
         <form action="./login.php" method="post">
-
           <div class="modal-header">
             <h4 class="modal-title" id="staticBackdropLabel">Đăng nhập</h4>
             <button class="btn btn-dangnhap col-6" data-bs-target="#dangky" data-bs-toggle="modal">Đăng ký</button>
@@ -505,6 +512,9 @@ session_start();
               <a href="" class="auth-form-policy-link-dang-nhap">Quên mật khẩu</a>
               <span class="auth-form-policy-help-separate"></span>
               <a href="" class="auth-form-policy-link-dang-nhap auth-form-policy-link-dang-nhap-help">Cần trợ giúp ?</a>
+              <?php if (isset($_GET['error'])) { ?>
+                <script type='text/javascript'>alert('Sai tài khoản hoặc mật khẩu');</script>
+              <?php } ?>
             </div>
           </div>
         </div>

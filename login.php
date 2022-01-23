@@ -15,7 +15,8 @@ if ($row != NULL) {
   header("Location: ./index.php");
 }
 else {
-  header("Location: ./giohang.html");
+  header("Location: ./index.php?error");
+  exit();
 }
 $conn->close();
 
