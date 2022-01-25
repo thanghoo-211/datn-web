@@ -73,6 +73,7 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <form action="./login.php" method="post">
+          <input name="uri" type="hidden" value="<?php echo $_SERVER["PHP_SELF"]?>">
           <div class="modal-header">
             <h4 class="modal-title" id="staticBackdropLabel">Đăng nhập</h4>
             <button class="btn btn-dangnhap col-6" data-bs-target="#dangky" data-bs-toggle="modal">Đăng ký</button>

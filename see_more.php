@@ -139,7 +139,7 @@ session_start();
             <form class="d-flex">
               <input class="form-control me-2" type="search" placeholder="Tìm kiếm sản phẩm, shop,..."
                 aria-label="Search">
-              <button class="btn btn-outline-warning"" type=" submit"><i class="fa fa-search"
+              <button class="btn btn-outline-warning" type=" submit"><i class="fa fa-search"
                   aria-hidden="true"></i></button>
             </form>
           </div>

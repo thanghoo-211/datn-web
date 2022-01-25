@@ -9,13 +9,14 @@ $conn = newConnection();
 $query = "SELECT * FROM `users` WHERE `email` = '$email' AND `password`='$pass'";
 $result = $conn->query($query);
 $row = $result->fetch_array(MYSQLI_BOTH);
+$uri = $_POST["uri"];
 if ($row != NULL) {
   $_SESSION["email"] = $row["email"];
   $_SESSION["user_name"] = $row["user_name"];
-  header("Location: ./index.php");
+  header("Location: .$uri");
 }
 else {
-  header("Location: ./index.php?error");
+  header("Location: .$uri?error");
   exit();
 }
 $conn->close();
