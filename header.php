@@ -1,15 +1,13 @@
 <?php
 session_start();
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Giỏ hàng</title>
+  <title>Trang chủ</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
@@ -26,9 +24,9 @@ session_start();
 </head>
 
 <body>
-  <div class="app login-page">
-    <!-- Header -->
-    <div class="bd-header header header-login-page">
+  <div class="app bd-layout">
+    <!-- Navigation header -->
+    <div class="bd-header header">
       <nav class="navbar">
         <ul class="navbar__list">
           <li class="navbar__list__item navbar__list__item--qr-code">
@@ -99,11 +97,7 @@ session_start();
               Trợ giúp
             </a>
           </li>
-          <!-- <li class="navbar__list__item navbar__list__item--strong" data-bs-toggle="modal" data-bs-target="#dangky">
-                      Đăng ký</li>
-                    <li class="navbar__list__item navbar__list__item--strong" data-bs-toggle="modal" data-bs-target="#dangnhap">
-                      Đăng nhập</li> -->
-                      <?php
+          <?php
             if ($_SESSION == NULL) {
               echo '<li class="navbar__list__item navbar__list__item--strong" data-bs-toggle="modal" data-bs-target="#dangky">Đăng ký</li>';
               echo '<li class="navbar__list__item navbar__list__item--strong" data-bs-toggle="modal" data-bs-target="#dangnhap">Đăng nhập</li>';
@@ -133,7 +127,7 @@ session_start();
         </ul>
       </nav>
       <div class="row">
-        <div class="col-3 text-center ">
+        <div class="col-3 text-center">
           <a href="./index.php" class="icon_home">
             <img src="./assets/img/tdt white.png" alt="TDT" class="icon__home-img">
           </a>
@@ -143,112 +137,27 @@ session_start();
             <form class="d-flex">
               <input class="form-control me-2" type="search" placeholder="Tìm kiếm sản phẩm, shop,..."
                 aria-label="Search">
-              <button class="btn btn-outline-warning"" type=" submit"><i class="fa fa-search"
+              <button class="btn btn-outline-warning" type=" submit"><i class="fa fa-search"
                   aria-hidden="true"></i></button>
             </form>
           </div>
         </div>
-        <div class="col-3 text-center icon-giohang">
-          <a href="./giohang.php" class="col-3 text-center icon_shop">
-            <i class="fas fa-shopping-cart position-relative icon-badge">
-              <span class="notification-icon">0<span class="visually-hidden">unread messages</span></span>
-            </i>
-          </a>
-          <!-- <button type="button" class="btn btn-primary position-relative">
-                    Mails <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-secondary">+99 <span class="visually-hidden">unread messages</span></span>
-                </button> -->
-        </div>
+        <div class="col-3 text-center">
+          <?php
+          if ($_SESSION == NULL) {
+            echo''.
+              '<a href="#" onclick = "myFunction()" class="col-3 text-center icon_shop" data-bs-toggle="modal" data-bs-target="#dangnhap">'.
+              // '<input href="javascript:myFunction;">'.
+              '<i class="fas fa-shopping-cart"></i>'.
+              'Giỏ hàng</a>';
+          }
+          else {
+            echo''.
+            '<a href="./giohang.php" class="col-3 text-center icon_shop">'.
+            '<i class="fas fa-shopping-cart"></i>'.
+            'Giỏ hàng</a>';
+          }
+          ?>
+         </div>
       </div>
     </div>
-    <div class="fake-postion"></div>
-    <div class="container container-login-page ">
-      <div class="row">
-        <div class="col-7">
-          <div class="row row-header">
-            <div class="col-6 login-page-text">SẢN PHẨM</div>
-            <div class="col-2 login-page-text">GIÁ</div>
-            <div class="col-2 login-page-text">SỐ LƯỢNG</div>
-            <div class="col-2 login-page-text">TỔNG</div>
-          </div>
-          <div class="row row-list">
-            <div class="col-6">
-              <div class="item-tinhtien row">
-                <div class="item-tinhtien-close-icon col-1"> <a href=""><i class="fa fa-times opacity-50"
-                      aria-hidden="true"></i></a></div>
-                <div class="item-tinhtien-img col-5"><a href=""><img src="./assets/img/nuoc_khoang.jpg"
-                      class="img-thumbnail" alt=""></a></div>
-                <div class="item-tinhtien-title col-6"><a href="">Nước khoáng TH 6 chai</a></div>
-              </div>
-            </div>
-            <div class="col-2 d-flex align-items-center  card-footer-price">6,000 đ</div>
-            <div class="col-2 d-flex align-items-center justify-content-center">
-              <input type="number" id="tentacles" name="tentacles" min="1" max="100">
-            </div>
-            <div class="col-2 d-flex align-items-center  card-footer-price">6,000 đ</div>
-          </div>
-          <div class="row row-list ">
-            <div class="col-6">
-              <div class="item-tinhtien row">
-                <div class="item-tinhtien-close-icon col-1"> <a href=""><i class="fa fa-times opacity-50"
-                      aria-hidden="true"></i></a></div>
-                <div class="item-tinhtien-img col-5"><a href=""><img src="./assets/img/cafe.jpg" class="img-thumbnail"
-                      alt=""></a></div>
-                <div class="item-tinhtien-title col-6"><a href="">Cà phê Highland 6 lon</a></div>
-              </div>
-            </div>
-            <div class="col-2 d-flex align-items-center card-footer-price">10,000 đ</div>
-            <div class="col-2 d-flex align-items-center justify-content-center">
-              <input type="number" id="tentacles" name="tentacles" min="1" max="100">
-            </div>
-            <div class="col-2 d-flex align-items-center card-footer-price">10,000 đ</div>
-          </div>
-          <a href="./index.php" class="text-decoration-none">
-            <button type="button" class="btn btn-return">
-              <i class="fas fa-arrow-circle-left"></i>
-              Tiếp tục xem sản phẩm
-            </button>
-          </a>
-          <button type="button" class="btn btn-update">Cập nhật giỏ hàng</button>
-        </div>
-        <div class="col-5 login-page-text border border-warning">
-          TỔNG SỐ LƯỢNG
-          <div class="row row-tong-tien-item">
-            <div class="row row-tong-tien">
-              <div class="col-6">Tổng phụ</div>
-              <div class="col-6 row-tong-tien-price">245,000 đ</div>
-            </div>
-            <div class="row row-tong-tien">
-              <div class="col-3">Giao hàng</div>
-              <div class="col-9">
-                <ul class="giaohang-item">
-                  <li class="list-giaohang">Giao hàng miễn phí</li>
-                  <li class="list-giaohang">Đây chỉ là ước tính. Giá sẽ cập nhật trong quá trình thanh toán.</li>
-                  <li class="list-giaohang">Tính phí giao hàng</li>
-                </ul>
-              </div>
-            </div>
-            <div class="row row-tong-tien">
-              <div class="col-6">Tổng</div>
-              <div class="col-6 row-tong-tien-price">245,000 đ</div>
-            </div>
-          </div>
-          <button type="button" class="btn btn-thanhtoan">Cập nhật giỏ hàng</button>
-        </div>
-      </div>
-      <div class="row row-discount">
-        <div class="col-7"></div>
-        <div class="col-5 login-page-text">
-
-          <div class="login-page-text-disount"> <i class="fas fa-tags"></i> PHIẾU ƯU ĐÃI </div>
-
-          <input type="text" class="form-control" id="floatingInput" style="text-transform:uppercase"
-            placeholder="Mã ưu đãi">
-          <button type="button" class="btn btn-outline-success btn-uu-dai">ÁP DỤNG</button>
-        </div>
-
-      </div>
-    </div>
-
-<?php
-include("./js-modal-footer.php")
-?> 

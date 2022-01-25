@@ -15,6 +15,7 @@ session_start();
     integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
   <link rel="stylesheet" href="./assets/css/base.css">
   <link rel="stylesheet" href="./assets/css/main.css">
+  <link rel="stylesheet" href="./assets/css/login.css">
   <link rel="stylesheet" href="./assets/css/sidebars.css">
   <link rel="stylesheet" href="./assets/css/footers.css">
   <link rel="stylesheet" href="./assets/css/seemore.css">
@@ -124,7 +125,7 @@ session_start();
                 '</ul>'.
               '</li>';
             }
-          ?>
+          ?>      
         </ul>
       </nav>
       <div class="row">
@@ -144,10 +145,21 @@ session_start();
           </div>
         </div>
         <div class="col-3 text-center">
-          <a href="./giohang.php" class="col-3 text-center icon_shop">
-            <i class="fas fa-shopping-cart"></i>
-            Giỏ hàng
-          </a>
+        <?php
+          if ($_SESSION == NULL) {
+            echo''.
+            '<a href="#" onclick = "myFunction()" class="col-3 text-center icon_shop" data-bs-toggle="modal" data-bs-target="#dangnhap">'.
+              // '<input href="javascript:myFunction;">'.
+              '<i class="fas fa-shopping-cart"></i>'.
+              'Giỏ hàng</a>';
+          }
+          else {
+            echo''.
+            '<a href="./giohang.php" class="col-3 text-center icon_shop">'.
+            '<i class="fas fa-shopping-cart"></i>'.
+            'Giỏ hàng</a>';
+          }
+          ?>
         </div>
       </div>
     </div>
@@ -396,165 +408,8 @@ session_start();
       </div>
 
     </div>
-    <div class="footer-container bg-light">
-      <footer class="py-5 footer-container">
-        <div class="row footer-container-canhle">
-          <div class="col-2">
-            <h5>Section</h5>
-            <ul class="nav flex-column">
-              <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Home</a></li>
-              <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Features</a></li>
-              <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Pricing</a></li>
-              <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">FAQs</a></li>
-              <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">About</a></li>
-            </ul>
-          </div>
+ 
 
-          <div class="col-2">
-            <h5>Section</h5>
-            <ul class="nav flex-column">
-              <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Home</a></li>
-              <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Features</a></li>
-              <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Pricing</a></li>
-              <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">FAQs</a></li>
-              <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">About</a></li>
-            </ul>
-          </div>
-
-          <div class="col-2">
-            <h5>Section</h5>
-            <ul class="nav flex-column">
-              <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Home</a></li>
-              <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Features</a></li>
-              <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Pricing</a></li>
-              <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">FAQs</a></li>
-              <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">About</a></li>
-            </ul>
-          </div>
-
-          <div class="col-4 offset-1">
-            <form>
-              <h5>Subscribe to our newsletter</h5>
-              <p>Monthly digest of whats new and exciting from us.</p>
-              <div class="d-flex w-100 gap-2">
-                <label for="newsletter1" class="visually-hidden">Email address</label>
-                <input id="newsletter1" type="text" class="form-control" placeholder="Email address">
-                <button class="btn btn-primary" type="button">Subscribe</button>
-              </div>
-            </form>
-          </div>
-        </div>
-
-        <div class="d-flex justify-content-center py-4 my-4 border-top">
-          <p>&copy; {{< year>}} Company, Inc. All rights reserved.</p>
-          <ul class="list-unstyled d-flex">
-            <li class="ms-3"><a class="link-dark" href="#"><svg class="bi" width="24" height="24">
-                  <use xlink:href="#twitter" />
-                </svg></a></li>
-            <li class="ms-3"><a class="link-dark" href="#"><svg class="bi" width="24" height="24">
-                  <use xlink:href="#instagram" />
-                </svg></a></li>
-            <li class="ms-3"><a class="link-dark" href="#"><svg class="bi" width="24" height="24">
-                  <use xlink:href="#facebook" />
-                </svg></a></li>
-          </ul>
-        </div>
-      </footer>
-    </div>
-  </div>
-
-
-  <!-- Modal dang nhap -->
-  <div class="modal fade" id="dangnhap" data-bs-keyboard="false" tabindex="-1" aria-labelledby="dangnhap"
-    aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h4 class="modal-title" id="staticBackdropLabel">Đăng nhập</h4>
-          <button class="btn btn-dangnhap col-6" data-bs-target="#dangky" data-bs-toggle="modal">Đăng ký</button>
-        </div>
-        <div class="modal-body">
-          <div class="mb-3 row">
-            <label for="exampleFormControlInput1" class="col-sm-2 col-form-label">Email</label>
-            <div class="col-sm-10">
-              <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
-            </div>
-          </div>
-          <div class="mb-3 row">
-            <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
-            <div class="col-sm-10">
-              <input type="password" class="form-control" id="inputPassword">
-            </div>
-          </div>
-          <div class="mb-4 row">
-            <div class="auth-form-policy-help">
-              <a href="" class="auth-form-policy-link-dang-nhap">Quên mật khẩu</a>
-              <span class="auth-form-policy-help-separate"></span>
-              <a href="" class="auth-form-policy-link-dang-nhap auth-form-policy-link-dang-nhap-help">Cần trợ giúp ?</a>
-            </div>
-          </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Trở lại</button>
-          <button type="button" class="btn btn-primary">Đăng nhập</button>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- Modal dang nhap -->
-
-  <!-- Modal dang ky -->
-  <div class="modal fade" id="dangky" tabindex="-1" aria-labelledby="dangky" aria-hidden="true">
-    <div class="modal-dialog ">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h4 class="modal-title col-6" id="exampleModalLabel">Đăng ký</h4>
-          <button class="btn btn-dangnhap col-6" data-bs-target="#dangnhap" data-bs-toggle="modal">Đăng nhập</button>
-        </div>
-        <div class="modal-body">
-          <div class="mb-7 row">
-            <label for="exampleFormControlInput1" class="col-sm-4 col-form-label">Email</label>
-            <div class="col-sm-10">
-              <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
-            </div>
-          </div>
-          <div class="mb-7 row">
-            <label for="inputPassword" class="col-sm-4 col-form-label">Password</label>
-            <div class="col-sm-10">
-              <input type="password" class="form-control" id="inputPassword">
-            </div>
-          </div>
-          <div class="mb-7 row">
-            <label for="inputPassword" class="col-sm-4 col-form-label">Nhập lại password</label>
-            <div class="col-sm-10">
-              <input type="password" class="form-control" id="inputPassword">
-            </div>
-          </div>
-          <div class="mb-7 row">
-            <p class="auth-form-policy-text">Bằng việc đăng kí, bạn đã đồng ý với Shop về
-              <a href="" class="auth-form-policy-link">Điều khoản dịch vụ</a> &
-              <a href="" class="auth-form-policy-link">Chính sách bảo mật</a>
-            </p>
-          </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Trở lại</button>
-          <button type="button" class="btn btn-primary">Đăng ký</button>
-        </div>
-      </div>
-    </div>
-
-
-  </div>
-
-
-
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
-    integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB"
-    crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
-    integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
-    crossorigin="anonymous"></script>
-</body>
-
-</html>
+<?php
+include("./js-modal-footer.php")
+?>
