@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -98,28 +102,33 @@
                             Trợ giúp
                         </a>
                     </li>
-                    <!-- <li class="navbar__list__item navbar__list__item--strong" data-bs-toggle="modal" data-bs-target="#dangky">
-                      Đăng ký</li>
-                    <li class="navbar__list__item navbar__list__item--strong" data-bs-toggle="modal" data-bs-target="#dangnhap">
-                      Đăng nhập</li> -->
-                    <li class="navbar__list__item navbar__list__item--strong header-navbar-user">
-                        <img src="./assets/img/avatar.jpg" alt="" class="header-navbar-user-img">
-                        <span class="header-navbar-user-name">Thắng Hoo</span>
-                        <ul class="header-navbar-user-menu">
-                            <li class="menu-user-item">
-                                <a href="">Tài khoản của tôi</a>
-                            </li>
-                            <li class="menu-user-item">
-                                <a href="">Địa chỉ của tôi</a>
-                            </li>
-                            <li class="menu-user-item">
-                                <a href="">Đơn mua</a>
-                            </li>
-                            <li class="menu-user-item">
-                                <a href="">Đăng xuất</a>
-                            </li>
-                        </ul>
-                    </li>
+                    <?php
+            if ($_SESSION == NULL) {
+              echo '<li class="navbar__list__item navbar__list__item--strong" data-bs-toggle="modal" data-bs-target="#dangky">Đăng ký</li>';
+              echo '<li class="navbar__list__item navbar__list__item--strong" data-bs-toggle="modal" data-bs-target="#dangnhap">Đăng nhập</li>';
+            }
+            else {
+              echo ''.
+              '<li class="navbar__list__item navbar__list__item--strong header-navbar-user">'.
+                '<img src="./assets/img/avatar.jpg" alt="" class="header-navbar-user-img">'.
+                '<span class="header-navbar-user-name">'. $_SESSION["user_name"] .'</span>'.
+                '<ul class="header-navbar-user-menu">'.
+                  '<li class="menu-user-item">'.
+                    '<a href="">Tài khoản của tôi</a>'.
+                  '</li>'.
+                  '<li class="menu-user-item">'.
+                    '<a href="">Địa chỉ của tôi</a>'.
+                  '</li>'.
+                  '<li class="menu-user-item">'.
+                    '<a href="">Đơn mua</a>'.
+                  '</li>'.
+                  '<li class="menu-user-item">'.
+                    '<a href="./logout.php">Đăng xuất</a>'.
+                  '</li>'.
+                '</ul>'.
+              '</li>';
+            }
+          ?>
                 </ul>
             </nav>
             <div class="row">
