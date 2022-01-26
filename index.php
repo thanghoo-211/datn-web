@@ -1,4 +1,5 @@
 <?php
+include("./public.php");
 session_start();
 ?>
 <!DOCTYPE html>
@@ -261,50 +262,39 @@ session_start();
             </button>
           </div>
           <div class="gap-element-fix"></div>
+
+          <!-- fix -->
+          <?php
+            $row_type = getAllType();
+            for ($type_idx = 0; $type_idx < count($row_type); $type_idx++) {
+          ?>
           <div class="card card-danhmuc">
             <div class="card-header header-items">
-              ĐỒ UỐNG CÁC LOẠI
+              <?php echo $row_type[$type_idx]["name"]?>
             </div>
             <div class="card-body">
               <div class="card-group">
+                <?php
+                  $row_product = getAllProductByTypeId($type_idx+1);
+                  if (!empty($row_product))
+                    for ($i = 0; $i < 3; $i++) {
+                ?>
                 <div class="card card-sanpham-danhmuc">
                   <a href="./detail.php" class="card-title-link">
-                    <img src="./assets/img/nuoc_khoang.jpg" class="card-img-top" alt="cafe">
+                    <img style="height: 217px;" src="data:image/jpg;charset=utf8;base64,<?php echo base64_encode($row_product[$i]['img_content'])?>" class="card-img-top" alt=<?php echo $row_product[$i]["name"]?>>
                     <div class="card-body card-body-danhmuc">
-                      <h5 class="card-title">Nước khoáng TH</h5>
-                      <p class="card-text">This card has supporting text below as a natural lead-in to additional
-                        content.</p>
-                      <div class="text-muted card-footer-price">6,000đ</div>
+                      <h5 class="card-title"><?php echo $row_product[$i]["name"]?></h5>
+                      <p class="card-text"><?php echo $row_product[$i]["des"]?></p>
+                      <div class="text-muted card-footer-price"><?php echo $row_product[$i]["price"]?> đ</div>
                     </div>
                   </a>
                   <div class="card-footer">
                     <button type="button" class="btn btn-success card-footer-btn">Thêm vào giỏ</button>
                   </div>
                 </div>
-                <div class="card card-sanpham-danhmuc">
-                  <img src="./assets/img/cafe.jpg" class="card-img-top" alt="cafe">
-                  <div class="card-body card-body-danhmuc">
-                    <h5 class="card-title">Cà phê sữa Highland</h5>
-                    <p class="card-text">This card has supporting text below as a natural lead-in to additional content.
-                    </p>
-                    <div class="text-muted card-footer-price">10,000đ</div>
-                  </div>
-                  <div class="card-footer">
-                    <button type="button" class="btn btn-success card-footer-btn">Thêm vào giỏ</button>
-                  </div>
-                </div>
-                <div class="card card-sanpham-danhmuc">
-                  <img src="./assets/img/coca.jpg" class="card-img-top" alt="cafe">
-                  <div class="card-body card-body-danhmuc">
-                    <h5 class="card-title">Nước ngọt coca</h5>
-                    <p class="card-text">This card has supporting text below as a natural lead-in to additional content.
-                    </p>
-                    <div class="text-muted card-footer-price">9,000đ</div>
-                  </div>
-                  <div class="card-footer">
-                    <button type="button" class="btn btn-success card-footer-btn">Thêm vào giỏ</button>
-                  </div>
-                </div>
+                <?php
+                  }
+                ?>
               </div>
             </div>
             <div class="card-footer text-center">
@@ -312,8 +302,14 @@ session_start();
                   thêm</button></a>
             </div>
           </div>
+          <!-- fix -->
+
           <div class="gap-element-fix"></div>
-          <div class="card card-danhmuc">
+          <?php
+            }
+          ?>
+
+          <!-- <div class="card card-danhmuc">
             <div class="card-header header-items">
               ĐỒ UỐNG CÁC LOẠI
             </div>
@@ -411,7 +407,7 @@ session_start();
               <a href="./see_more.php"><button type="button" class="card-footer_xemthembtn btn btn-primary">Xem
                   thêm</button></a>
             </div>
-          </div>
+          </div> -->
         </div>
       </div>
     </div>

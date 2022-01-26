@@ -1,5 +1,6 @@
 <?php
-include("./utils/db.php");
+// include("./utils/db.php");
+include("./public.php");
 session_start();
 
 $email = $_POST["email"];
@@ -11,6 +12,7 @@ $result = $conn->query($query);
 $row = $result->fetch_array(MYSQLI_BOTH);
 $uri = $_POST["uri"];
 if ($row != NULL) {
+  addProduct("test", 1, "des", "pic", 123456, 2);
   $_SESSION["email"] = $row["email"];
   $_SESSION["user_name"] = $row["user_name"];
   header("Location: .$uri");
